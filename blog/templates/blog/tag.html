@@ -1,0 +1,16 @@
+<h1>MR Blog</h1>
+<br>
+
+{% if post_list %}
+	<ul>
+		{% for post in post_list %}
+		<li><a href="{% url 'blog:content' post.post_slug %}"><h2>{{ post.post_title }}</h2></a></li>
+		<p>{{ post.post_body }}</p>
+		<br>
+		<h3>{{ post.post_pubdate }}</h3>
+		<br><br>
+		{% endfor %}
+	</ul>
+{% else %}
+<p>No posts are available!</p>
+{% endif %}

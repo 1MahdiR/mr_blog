@@ -9,3 +9,7 @@ def hello_world(req):
 
 def redirect_to_blog(req):
     return HttpResponseRedirect(reverse('blog:index'))
+
+
+def to_test(req):
+    return HttpResponse(" , ".join(dir(req)) + "<br>THIS IS TEST!!!<br><br>" + str(req.POST))
