@@ -3,7 +3,12 @@
 
 <p>{{ my_post.post_body }}</p>
 <br>
-<p class="tags">Tags: {{ my_post.tags.all | join:", " }}</p>
+<p class="tags">Tags:
+{% for tag in my_post.tags.all %}
+<a href="{% url 'blog:posts_by_tag' tag.slug %}">{{ tag.name }}</a>
+{% if not forloop.last %}, {% endif %}
+{% endfor %}
+</p>
 <hr><br>
 {% with comments.count as total_comments %}
 <h2>

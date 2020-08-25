@@ -1,6 +1,8 @@
+{% load blog_tags %}
+
 <h1>MR Blog</h1>
 <br>
-
+<p>This is my blog, I've written {% total_posts %} posts so far.</p>
 {% if post_list %}
 	<ul>
 		{% for post in post_list %}
