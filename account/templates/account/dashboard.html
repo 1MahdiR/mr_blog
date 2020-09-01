@@ -1,0 +1,13 @@
+<head>
+	<title>Dashboard</title>
+</head>
+<body>
+	<br>
+	<p>Welcome to your dashboard</p>
+	<p>You can edit your account using the following form:</p>
+	<form method="post" enctype="multipart/form-data">
+		{{ user_form.as_p }}
+		{% csrf_token %}
+		<p><input type="submit" value="Save changes"></p>
+	</form>
+</body>

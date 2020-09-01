@@ -33,7 +33,7 @@ def content(req, post):
     #return HttpResponse("This is post '%s'." % my_post.post_title)
 
     # List of active comments for this post!
-    comments = my_post.comments.filter(active=True)
+    comments = my_post.comments_post.filter(active=True)
 
     new_comment = None
 
@@ -45,6 +45,7 @@ def content(req, post):
             new_comment = comment_form.save(commit=False)
             # Assign the current post to the comment
             new_comment.post = my_post
+            new_comment.user = req.user
             # Save the comment to the database
             new_comment.save()
     else:
@@ -54,4 +55,3 @@ def content(req, post):
                                                 'comments':comments,
                                                 'new_comment':new_comment,
                                                 'comment_form':comment_form })
-

@@ -24,4 +24,5 @@ urlpatterns = [
     path('hello_world/', views.hello_world),
     path('blog/', include('blog.urls')),
     path('to_test/', views.to_test),
+    path('account/', include('account.urls')),
 ]

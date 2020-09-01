@@ -16,6 +16,8 @@
 </h2>
 {% endwith %}
 
+{% if request.user.is_authenticated %}
+
 {% if new_comment %}
 	<h2>Your comment has been added.</h2>
 {% else %}
@@ -27,18 +29,26 @@
 	</form><br>
 {% endif %}
 
+{% else %}
+
+	<p>For adding a new comment you need to <a href="{% url 'account:login' %}">log in</a> first.
+
+{% endif %}
+
 {% for comment in comments %}
 
 <div class="comment">
 	<p class="info">
-	Comment {{ forloop.counter }} by {{ comment.name }}
+	Comment {{ forloop.counter }} by {{ comment.user.first_name }}
 	{{ comment.created }}
 	</p>
 	{{ comment.body|linebreaks }}
 	<hr>
 </div>
 {% empty %}
+<br><br>
 	<p>There are no comments yet.</p><hr>
 {% endfor %}
+
 <br><br><p>All rights reserved</p>
 
